@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [mode, setMode] = useState("signup");
   const [error, setError] = useState(null);
-  const { user, signup, login, logout } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { signup, login } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ function Auth() {
       result = login(data.email, data.password);
     }
     if (result.success) {
-      navigate("/")
+      navigate("/");
     } else {
       setError(result.error);
     }
