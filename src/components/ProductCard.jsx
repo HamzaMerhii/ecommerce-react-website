@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function ProductCard({ product: { image, name, price } }) {
   return (
     <div className="product-card">
-      <img src={image} className="product-card-image" />
+      <img src={image} alt={name} className="product-card-image" />
       <div className="product-card-content">
         <h3 className="product-card-title">{name}</h3>
         <p className="product-card-price">${price}</p>
